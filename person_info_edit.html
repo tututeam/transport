@@ -1,117 +1,78 @@
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>主要内容区main</title>
+    <style>
 
-        <style type="text/css">
-            td
-            {
-                text-align:center;
-            }
-            table {
-                font-size:18px;
-            }
-        </style>
+        td {
+            border: solid lightskyblue;
+            border-width: 0px 1px 1px 0px;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+
+        table {
+            border: solid lightskyblue;
+            border-width: 1px 0px 0px 1px;
+        }
+
+          </style>
 </head>
 <body>
-<table  border="0" align="center">
-    <tr>
-        <td width="80" height="29"></td>
-        <td bgcolor="#B9EDF7"><b>人员信息登记表</b></td>
+<p style="text-align: center;"><span style="font-size: 24px;">示例表</span></p>
+<table width="100%" cellspacing="0" cellpadding="1">
+    <tbody>
+    <tr class="firstRow">
+        <td><p> 姓名  </p></td>
+        <td><input /></td>
+        <td> 性别 </td>
+        <td style=""><span leipiplugins="select"><select name="leipiNewField" title="下拉菜单" leipiplugins="select" size="1" org="" style="width: 150px;"><option value="下拉">  下拉  </option>  <option value="菜单">  菜单  </option></select>&nbsp;&nbsp;</span> </td>
+        <td colspan="1" rowspan="1" > 照片  </td>
+        <td colspan="1" rowspan="1" > &nbsp;<input name="leipiNewField" type="text" title="a" value="" leipiplugins="text" orghide="0" orgalign="left" org="" orgtype="text" style="text-align: left; width: 150px;" /></td>
     </tr>
+    <tr>
+        <td> 单选 </td>
+        <td><span leipiplugins="radios" title="单选" name="leipiNewField"><input value="单选1" type="radio" />单选1&nbsp;<input value="单选2" type="radio" />单选2&nbsp;</span></td>
+        <td> 复选框 </td>
+        <td><span leipiplugins="checkboxs" title="复选"> <input name="leipiNewField" value="复选1" type="checkbox" checked="checked" />复选1&nbsp; <input name="leipiNewField" value="复选2" type="checkbox" checked="checked" />复选2&nbsp;<input name="leipiNewField" value="复选3" type="checkbox" />复选3&nbsp;</span></td>
+        <td colspan="1" rowspan="1" > 岗位  </td>
+        <td colspan="1" rowspan="1" ><input name="leipiNewField" type="text" title="a" value="" leipiplugins="text" orghide="0" orgalign="left" org="" orgtype="text" style="text-align: left; width: 150px;" /> </td>
+    </tr>
+    <tr>
+        <td> 工作号&nbsp;&nbsp; </td>
+        <td ><input name="leipiNewField" type="text" title="a" value="" leipiplugins="text" orghide="0" orgalign="left" org="" orgtype="text" style="text-align: left; width: 150px;" /></td>
+        <td> 文化程度<br /><br /> </td>
+        <td ><input name="leipiNewField" type="text" title="a" value="" leipiplugins="text" orghide="0" orgalign="left" org="" orgtype="text" style="text-align: left; width: 150px;" /></td>
+        <td colspan="1" rowspan="1" > 民族  </td>
+        <td colspan="1" rowspan="1" ><input name="leipiNewField" type="text" title="a" value="" leipiplugins="text" orghide="0" orgalign="left" org="" orgtype="text" style="text-align: left; width: 150px;" /> </td>
+    </tr>
+    <tr>
+        <td colspan="1" rowspan="1"> 个人履历  </td>
+        <td colspan="5" rowspan="1" s=""><textarea title="a" name="leipiNewField" leipiplugins="textarea" value="" orgrich="0" orgfontsize="" org="" orgheight="80" style="width: 662px; height: 87px; margin: 0px;"></textarea> </td>
+    </tr>
+    <tr>
+        <td colspan="1" rowspan="2" style=";"><p><br /></p> <p> 服装配备情况  </p></td>
+        <td colspan="1" rowspan="1"> 上衣 </td>
+        <td colspan="1" rowspan="1"> 裤子 </td>
+        <td colspan="1" rowspan="1"> 衣服 </td>
+        <td colspan="2" rowspan="1"> 鞋子 </td>
+    </tr>
+    <tr>
+        <td colspan="1" rowspan="1"><input name="leipiNewField" type="text" title="1" value="" leipiplugins="text" orghide="0" orgalign="left" org="" orgtype="text" style="text-align: left; width: 50px;" /></td>
+        <td colspan="1" rowspan="1"><input name="leipiNewField" type="text" title="1" value="" leipiplugins="text" orghide="0" orgalign="left" org="" orgtype="text" style="text-align: left; width: 50px;" /></td>
+        <td colspan="1" rowspan="1"><input name="leipiNewField" type="text" title="1" value="" leipiplugins="text" orghide="0" orgalign="left" org="" orgtype="text" style="text-align: left; width: 50px;" /></td>
+        <td colspan="2" rowspan="1"><input name="leipiNewField" type="text" title="a" value="" leipiplugins="text" orghide="0" orgalign="left" org="" orgtype="text" style="text-align: left; width: 50px;" /></td>
+    </tr>
+
+    </tbody>
 </table>
-<br><br>
-
-
-
-<table width="800" border="0" align="center">
-    <tr>
-        <td width="80"><b>用户名:</b></td>
-        <td><input type="text" name="name" class="bule"/>
-        </td>
-        </td>
-        <td class="font1">不超过7个汉字，或14个字节（数字，字母和下划线）</td>
-    </tr>
-    <tr>
-        <td><b>密码：  </b></td>
-        <td>
-            <input type="password" name="password1" size="20"class="bule"/></td>
-        <td class="font1">最少6个字符，不超过14个字符（数字，字母和下划线）</td>
-    </tr>
-    <tr>
-        <td><b>确定密码：</b></td>
-        <td colspan="2">
-            <input type="password" name="password11" size="20"class="bule"/>
-        </td>
-    </tr>
-    <tr>
-        <td><b>性别：  </b></td>
-        <td colspan="2">
-            <input type="radio"  name="gender" value="女" checked/>女
-            <input type="radio"  name="gender" value="男"/>男<br><br>
-        </td>
-    </tr>
-    <tr>
-        <td><b>个人爱好：</b></td>
-        <td colspan="2">
-            <input type="checkbox" name="intrest" value="文学"/>文学
-            <input type="checkbox" name="intrest" value="影视"/>影视
-            <input type="checkbox" name="intrest" value="音乐"/>音乐
-            <input type="checkbox" name="intrest" value="体育"/>体育
-        </td>
-    </tr>
-    <tr>
-        <td><b>所在城市：</b></td>
-        <td colspan="2"><select size="1" name="province">省份
-            <option>浙江</option>
-            <option>山东</option>
-        </select>
-            <select size="1" name="city">省份
-                <option>绍兴</option>
-                <option>潍坊</option>
-            </select>
-            <br><br>
-        </td>
-    </tr>
-    <tr>
-        <td><b>家庭住址:</b></td>
-        <td><input type="text" name="address" class="bule"/></td>
-        <td class="font1">请输入详细的家庭住址，接受活动邮件</td>
-    </tr>
-    <tr>
-        <td><b>电子邮件：</b></td>
-        <td><input type="text" name="email" class="bule"/></td>
-        <td class="font1">  请输入有效的邮件地址，当密码遗失时凭此领取</td>
-    </tr>
-    <tr>
-        <td><b>验证码：</b></td>
-        <td><input type="text" name="check-img" class="bule"/></td>
-        <td></td>
-    </tr>
-
-
-    <tr>
-        <td colspan="3">
-            <form method="post" action="">是否同意条款内容
-                <input type="radio" name="aggree" value="aggree"/> 我同意
-                <input type="radio" name="aggree" value="disaggree"/> 我不同意<br><br>
-                <textarea name="textarea" cols="100" rows="10" wrap="hard" class="bule">
-    </textarea>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3" align="center"><input type="submit" value="提交"/>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3" align="center"><input type="reset" value="重置"/>
-        </td>
-    </tr>
-
-
-
-
-
+<div style="margin-left: 45%">
+    <input type="button" value="提交"/>
+    <input type="button" value="重置"/>
+</div>
+<p><br /></p>
+<p><br /></p>
+<p><br /></p>
 </body>
 </html>
