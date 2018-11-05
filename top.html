@@ -3,6 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>后台页面头部</title>
 <link href="css/css.css" type="text/css" rel="stylesheet" />
+    <script src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body onselectstart="return false" oncontextmenu=return(false) style="">
 <!--禁止网页另存为-->
@@ -35,8 +36,8 @@
         <td align="left" valign="top" id="header-admin">交通管理系统</td>
         <td align="left" valign="bottom" id="header-menu">
 
-        <a href="main.html" target="mainFrame" onFocus="this.blur()" id="menuon">系统首页</a>
-        <a   tabindex="1" href="main_person.html" onclick="this.style.background='red'" target="mainFrame"  onFocus="this.blur()">执法人员管理</a>
+        <a href="main.html" target="mainFrame" onFocus="this.blur()" class="menu_active">系统首页</a>
+        <a tabindex="1" href="main_person.html" target="mainFrame"  onFocus="this.blur()">执法人员管理</a>
         <a href="index.html" target="mainFrame" onFocus="this.blur()">执法车辆</a>
         <a href="index.html" target="mainFrame" onFocus="this.blur()">执法车辆信息</a>
         <a href="index.html" target="mainFrame" onFocus="this.blur()">装备器材留言</a>
@@ -46,5 +47,13 @@
     </table></td>
   </tr>
 </table>
+<script>
+    $(function(){
+        $("a").click(function(e) {
+            $("a").removeClass('menu_active');    // 先删除所有元素的selected样式
+            $(e.target).addClass('menu_active');  // 然后为被点击元素添加selected样式
+        });
+    })
+</script>
 </body>
 </html>

@@ -33,9 +33,9 @@ a.black:hover,a.black:active{ font-size:12px; color:#548fc9; font-weight:bold;  
 #header-right a:hover.admin-home{ background:url(../images/main/boolon.jpg) no-repeat 1px 2px;}
 #header-right a.admin-index{ background:url(../images/main/home.jpg) no-repeat 0px 1px; padding:0 10px 0 20px;}
 #header-right a:hover.admin-index{ background:url(../images/main/homeon.jpg) no-repeat 0px -1px;}
-#header-menu a{ width:87px; height:37px; line-height:32px; margin:0 2px 0 0; display:inline; text-align:center; font-size:14px; font-weight:bold; background:url(../images/main/menu.jpg) no-repeat left bottom; float:left}
+#header-menu a{ width:87px; height:37px; line-height:32px; margin:0 2px 0 0; display:inline; text-align:center; font-size:14px; font-weight:bold;  float:left}
 #header-menu a:hover{ background:url(../images/main/menuon.jpg) no-repeat left bottom; color:#FFF}
-#header-menu a#menuon{ background:url(../images/main/menuon.jpg) no-repeat left bottom; color:#FFF}
+.menu_active{ background:url(../images/main/menuon.jpg) no-repeat left bottom; color:#FFF}
 /*#header-menu a:visited{ background:url(../images/main/menuon.jpg) no-repeat left bottom; color:#FFF}*/
 
 /*left*/
