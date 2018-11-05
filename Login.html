@@ -1,38 +1,40 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>电梯系统</title>
-<link href="css/basic.css" rel="stylesheet" type="text/css">
-<link href="css/style.css" rel="stylesheet" type="text/css">
-<!--[if IE]><script src="Scripts/html5.js"></script><![endif]-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>后台管理登录界面</title>
+    <link href="css/alogin.css" rel="stylesheet" type="text/css" />
 </head>
-
-<body class="bluebg">
-<form action="" method="post" class="login">
-  <div class="login_l">
-    <div class="login_tip"></div>
-    <div class="clearfix">
-      <label for="userName">用户名</label>
-      <input id="userName" name="userName" class="login_txt">
+<body>
+    <form id="form1" runat="server" action="" method="post">
+    <div class="Main">
+        <ul>
+            <li class="top"></li>
+            <li class="top2"></li>
+            <li class="topA"></li>
+            <li class="topB"><span><img src="images/login/logo.gif" alt="" style="" /></span></li>
+            <li class="topC"></li>
+            <li class="topD">
+                <ul class="login">
+                    <li><span class="left login-text">用户名：</span> <span style="left">
+                        <input id="Text1" type="text" class="txt" name="username"/>  
+                     
+                    </span></li>
+                    <li><span class="left login-text">密码：</span> <span style="left">
+                       <input id="Text2" type="password" class="txt" name="pwd" />  
+                    </span></li>
+					
+                </ul>
+            </li>
+            <li class="topE"></li>
+            <li class="middle_A"></li>
+            <li class="middle_B"></li>
+            <li class="middle_C"><span class="btn"><input name="" type="image" src="images/login/btnlogin.gif" /></span></li>
+            <li class="middle_D"></li>
+            <li class="bottom_A"></li>
+            <li class="bottom_B">网站后台管理系统&nbsp;&nbsp;www.php.com</li>
+        </ul>
     </div>
-    <div class="clearfix">
-      <label for="PasswordFor">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
-      <input id="PasswordFor" name="PasswordFor" class="login_txt">
-    </div>
-    <div class="clearfix">
-      <label for="Verification">验证码</label>
-      <input id="Verification" name="Verification" class="login_txt_short">
-      <img src="images/verificate_code.gif" class="login_verificate">
-    </div>
-  </div>
-  <div class="login_r">
-    <div class="clearfix">
-      <input type="checkbox" checked="checked" class="floatleft checkbox mt3">
-      <span class="floatleft ml4 white f14">记住我</span> </div>
-    <input type="submit" value="登 录" class="login_btn">
-    <input type="reset" value="重 置" class="login_btn">
-  </div>
-</form>
+    </form>
 </body>
 </html>
