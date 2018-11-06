@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+
+        td {
+            border: solid lightskyblue;
+            border-width: 0px 1px 1px 0px;
+            white-space: nowrap;
+            text-align: center;
+            height: 35px;
+        }
+
+        input{
+            width: 50%;
+        }
+
+        table {
+            border: solid lightskyblue;
+            border-width: 1px 0px 0px 1px;
+        }
+
+        </style>
+</head>
+<body>
+<p style="text-align: center;"><span style="font-size: 24px;">清障案件</span></p>
+<table width="100%" cellspacing="0" cellpadding="1">
+    <tbody>
+    <tr>
+        <td>序号</td>
+        <td><input name="caseNo"/></td>
+
+        <td>日期</td>
+        <td><span><input name="Date" type="date"></td>
+    </tr>
+
+    <tr>
+        <td>起止时间</td>
+        <td><span><input name="Time" placeholder="如：1：00-2：00"></td>
+            
+        <td>清障路段及情况 </td>
+        <td><input name="roadSituation"/></td>
+    </tr>
+
+    <tr>
+        <td>车号 </td>
+        <td><input name="carNum"/></td>
+
+        <td> 车型</td>
+        <td><span>
+            <select name="leipiNewField" title="下拉菜单"  size="1" style="width: 50%">
+            <option value="big">大</option><option value="mid">中</option><option value="small">小</option>
+        </select></span></td>
+    </tr>
+
+    <tr>
+        <td>被拖车类型 </td>
+        <td><input name="trailerType"/></td>
+
+        <td>清障（平板）费</td>
+        <td><span><input name="money"></td>
+    </tr>
+
+    <tr>
+        <td>吊车费 </td>
+        <td><input name="craneMoney"/></td>
+    
+        <td>停车费</td>
+        <td><input name="stopMoney"></td>
+        </tr>
+
+    <tr>
+        <td> 备注</td>
+        <td><span><input name="note"></td>
+        <td>上报时间</td>
+        <td><span><input name="reportDate" type="date"></td>
+    </tr>  
+
+    <tr>
+        <td>结案时间</td>
+        <td><span><input name="endDate" type="date" style="width:30%"><input name="endTime" type="time" style="width:20%"></td>
+    
+        <td> 所属局</td>
+        <td><span><input name="belongsTo"></td>
+    </tr>   
+
+    </tbody>
+</table>
+<br>
+<div style="margin-left: 45%">
+    <input type="button" value="提交" style="width:5%"/>
+    <input type="button" value="重置" style="width:5%"/>
+</div>
+</body>
+</html>

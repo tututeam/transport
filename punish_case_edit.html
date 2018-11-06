@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+
+        td {
+            border: solid lightskyblue;
+            border-width: 0px 1px 1px 0px;
+            white-space: nowrap;
+            text-align: center;
+            height: 35px;
+        }
+
+
+
+        table {
+            border: solid lightskyblue;
+            border-width: 1px 0px 0px 1px;
+        }
+
+        </style>
+</head>
+<body>
+<p style="text-align: center;"><span style="font-size: 24px;">处罚案件</span></p>
+<table width="100%" cellspacing="0" cellpadding="1">
+    <tbody>
+    <tr>
+        <td>案件编号</td>
+        <td><input name="caseNo"/></td>
+
+        <td> 所属局</td>
+        <td><span><input name="belongsTo"></td>
+    </tr>
+
+    <tr>
+        <td> 发案时间</td>
+        <td><span><input name="Date" type="date" ><input name="Time" type="time" ></td>
+            
+        <td>发案路段 </td>
+        <td><input name="caseRoad"/></td>
+    </tr>
+
+    <tr>
+        <td>车号 </td>
+        <td><input name="carNum"/></td>
+
+        <td> 车型</td>
+        <td><span>
+            <select name="leipiNewField" title="下拉菜单"  size="1"  style="width: 30%;">
+            <option value="big">大</option><option value="mid">中</option><option value="small">小</option>
+        </select></span></td>
+    </tr>
+
+    <tr>
+        <td>案件内容 </td>
+        <td><input name="content"/></td>
+
+        <td> 处罚金额</td>
+        <td><span><input name="money"></td>
+    </tr>
+
+    <tr>
+        <td>结案时间</td>
+        <td><span><input name="endDate" type="date" ><input name="endTime" type="time" ></td>
+    
+        <td> 备注</td>
+        <td><span><input name="note"></td>
+    </tr>   
+
+    <tr>
+        <td>上报时间</td>
+        <td><span><input name="reportDate" type="date" ><input name="reportTime" type="time" ></td>
+        <td></td>
+        <td></td>
+    </tr>  
+
+    </tbody>
+</table>
+<br>
+<div style="margin-left: 45%">
+    <input type="button" value="提交"/>
+    <input type="button" value="重置"/>
+</div>
+</body>
+</html>
