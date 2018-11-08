@@ -13,12 +13,13 @@ td {
 table {
     border: solid lightskyblue;
     border-width: 1px 0px 0px 1px;
-    width: 1136px;
-}
-input [type="text"]{
-    border: none;
-    overflow: hidden;
-    height: 100%;
     width: 100%;
+}
+
+input[type="text"] {
+    /*overflow: hidden;*/
+    height: 90%;
+    width: 90%;
+    /*border: 1px solid;*/
 }
 
