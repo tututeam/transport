@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+
+        td {
+            border: solid lightskyblue;
+            border-width: 0px 1px 1px 0px;
+            white-space: nowrap;
+            text-align: center;
+            height: 35px;
+
+        }
+        
+        input{
+            width: 98%;
+        }
+
+
+        table {
+            border: solid lightskyblue;
+            border-width: 1px 0px 0px 1px;
+        }
+
+        </style>
+</head>
+<body>
+<p style="text-align: center;"><span style="font-size: 24px;">路政案件日合计</span></p>
+<table width="100%" cellspacing="0" cellpadding="1">
+    <tbody>
+    <tr>
+        <td>序号 </td>
+        <td><input name="No"/></td>
+
+        <td>时间</td>
+        <td><span><input name="Date" type="date"></td>            
+    </tr>
+
+    <tr>
+        <td>处理案件数</td>
+        <td><input name="dealCaseNum"></td>
+            
+        <td>破案数</td>
+        <td><input name="solveNo"/></td>
+    </tr>
+
+    <tr>
+        <td>结案数</td>
+        <td><input name="settleCaseNum"></td>
+                
+        <td>结本年案件数</td>
+        <td><input name="settleCaseNumThisYear"/></td>
+    </tr>
+    
+    <tr>
+        <td>万元以上案件</td>
+        <td><input name="tenThousandCaseNum"></td>
+                    
+        <td>损失金额</td>
+        <td><input name="lossMoney"/></td>
+    </tr>
+
+    <tr>
+        <td>已收赔偿费</td>
+        <td><input name="compensation"/></td>
+        <td>处罚案件数</td>
+        <td><input name="punishCaseNum"/></td>
+    </tr>
+
+    <tr>
+        <td>处罚金额</td>
+        <td><input name="punishMoney"/></td>
+        <td>清障次数</td>
+        <td><input name="removeNum"/></td>
+    </tr>
+
+    <tr>
+        <td>已收清障费</td>
+        <td><input name="removeMoney"/></td>
+        <td>占用案件数</td>
+        <td><input name="occupyNum"/></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<div style="margin-left: 45%">
+    <input type="button" value="提交" style="width:5%"/>
+    <input type="button" value="重置" style="width:5%"/>
+</div>
+</body>
+</html>

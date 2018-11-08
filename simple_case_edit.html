@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+
+        td {
+            border: solid lightskyblue;
+            border-width: 0px 1px 1px 0px;
+            white-space: nowrap;
+            text-align: center;
+            height: 35px;
+
+        }
+        
+        input{
+            width: 98%;
+        }
+
+
+        table {
+            border: solid lightskyblue;
+            border-width: 1px 0px 0px 1px;
+        }
+
+        </style>
+</head>
+<body>
+<p style="text-align: center;"><span style="font-size: 24px;">简易立案修改记录</span></p>
+<table width="100%" cellspacing="0" cellpadding="1">
+    <tbody>
+
+    <tr>  
+        <td>序号</td>
+        <td><input name="No"/></td>
+        <td>案件编号</td>
+        <td><input name="caseNo"></td>
+
+    </tr>
+    
+    <tr>
+        <td>受案时间</td>
+        <td><input name="acceptTime"/></td>
+        <td>修改案件时间</td>
+        <td><input name="modifyTime"/></td>
+    </tr>
+
+    <tr>
+        <td>案件基本情况</td>
+        <td><input name="basicSituation"/></td>
+        <td>修改案件基本情况</td>
+        <td><input name="modifySituation"/></td>
+    </tr>
+
+    </tbody>
+</table>
+<br>
+<div style="margin-left: 45%">
+    <input type="button" value="提交" style="width:5%"/>
+    <input type="button" value="重置" style="width:5%"/>
+</div>
+</body>
+</html>

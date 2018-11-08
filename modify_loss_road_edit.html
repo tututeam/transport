@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+
+        td {
+            border: solid lightskyblue;
+            border-width: 0px 1px 1px 0px;
+            white-space: nowrap;
+            text-align: center;
+            height: 35px;
+
+        }
+        
+        input{
+            width: 98%;
+        }
+
+
+        table {
+            border: solid lightskyblue;
+            border-width: 1px 0px 0px 1px;
+        }
+
+        </style>
+</head>
+<body>
+<p style="text-align: center;"><span style="font-size: 24px;">损坏路产修改记录视图</span></p>
+<table width="100%" cellspacing="0" cellpadding="1">
+    <tbody>
+    <tr>
+        <td>自动序号</td>
+        <td><input name="autoNo"></td>
+            
+        <td>案件序号</td>
+        <td><input name="caseNo"/></td>
+    </tr>
+    
+    <tr>
+        <td>所属局</td>
+        <td><input name="belongsTo"/></td>
+        <td>单位名称</td>
+        <td><input name="unitName"/></td>
+    </tr>
+
+    <tr>
+        <td>案发时间</td>
+        <td><input name="caseTime"></td>
+                        
+        <td>修改案发时间</td>
+        <td><input name="modifyTime"/></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<div style="margin-left: 45%">
+    <input type="button" value="提交" style="width:5%"/>
+    <input type="button" value="重置" style="width:5%"/>
+</div>
+</body>
+</html>
