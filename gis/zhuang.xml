@@ -1,0 +1,10 @@
+<osm version="0.6" generator="CGImap 0.6.1 (1490 thorn-01.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+    <node id="276012348" visible="true" version="8" changeset="11064143" timestamp="2012-03-22T15:39:36Z" user="R438" uid="376715" lat="39.8476833" lon="116.3268157"/>
+    <node id="1788526030" visible="true" version="1" changeset="11904819" timestamp="2012-06-15T13:20:25Z" user="R438" uid="376715" lat="39.8524116" lon="116.3147947"/>
+
+    <node id="2761238" visible="true" version="8" changeset="11064143" timestamp="2012-03-22T15:39:36Z" user="R438" uid="376715" lat="39.850863008033485" lon="116.31626307964326"/>
+    <node id="276094648" visible="true" version="8" changeset="11064143" timestamp="2012-03-22T15:39:36Z" user="R438" uid="376715" lat="39.849483348905274" lon="116.3181781768799"/>
+    <node id="2762348" visible="true" version="8" changeset="11064143" timestamp="2012-03-22T15:39:36Z" user="R438" uid="376715" lat="39.84841872731117" lon="116.32060557603839"/>
+    <node id="2764568" visible="true" version="8" changeset="11064143" timestamp="2012-03-22T15:39:36Z" user="R438" uid="376715" lat="39.84777418048889" lon="116.32358819246294"/>
+
+</osm>

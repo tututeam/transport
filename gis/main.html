@@ -36,25 +36,23 @@
 <pre id='info'></pre>
 <div style="position: absolute;bottom: 0">
     <button onclick="mypoint()" value="选取两点">选取两点</button>
+    <button onclick="myzhuang()" value="均分打桩">均分打桩</button>
     <button onclick="myline()"  value="公路连线">公路连线</button>
     <button onclick="mycircle()" value="曲率半径">曲率半径</button>
-    <button onclick="myzhuang()" value="均分打桩">均分打桩</button>
 </div>
 <script>
     function mypoint() {
+
         $.ajax({
             url:"point.xml",
             dataType: "xml",
             success: function (xml) {
                 var layer = new L.OSM.DataLayer(xml).addTo(map);
-                console.log(layer);
                 map.fitBounds(layer.getBounds());
-                console.log(layer.getBounds());
 
             }
         });
         map.on('mousemove', function (e) {
-            console.log(e.containerPoint);
             document.getElementById("info").innerHTML =
 
                     JSON.stringify(e.containerPoint) + '<br />' +
@@ -62,14 +60,21 @@
         });
     }
     function myline() {
+
         $.ajax({
             url:"line.xml",
             dataType: "xml",
             success: function (xml) {
                 var layer = new L.OSM.DataLayer(xml).addTo(map);
-                console.log(layer);
-                map.fitBounds(layer.getBounds());
-                console.log(layer.getBounds());
+
+//                console.log( new L.OSM.DataLayer(xml));
+
+//                map.fitBounds(layer);
+
+//                layer.getBounds().features.forEach(function(feature) {
+//                    bounds.extend(feature.geometry.coordinates);
+//                });
+
 
             }
         });
@@ -83,7 +88,9 @@
                 var layer = new L.OSM.DataLayer(xml).addTo(map);
                 console.log(layer);
                 map.fitBounds(layer.getBounds());
-                alert("半径为0.913427937804千米")
+                console.log(layer.getBounds());
+
+//                alert("半径为0.913427937804千米")
 
             }
         });
@@ -107,6 +114,12 @@
     L.mapbox.accessToken = 'pk.eyJ1Ijoid3NjanhreSIsImEiOiJjam9xcDJoaDgwNWo3M3JuMml5MDc2eDFkIn0.r1OzCvqtb8intUKrx_FozA';
     var map = L.mapbox.map('map', 'mapbox.streets');
     map.on('mousemove', function (e) {
+        document.getElementById("info").innerHTML =
+                JSON.stringify(e.containerPoint) + '<br />' +
+                JSON.stringify(e.latlng);
+    });
+    map.on('click', function (e) {
+        console.log(e.latlng);
         document.getElementById("info").innerHTML =
 
                 JSON.stringify(e.containerPoint) + '<br />' +
