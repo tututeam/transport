@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Leaflet OSM</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+        <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%;height:95%; }
+        #info {
+            display: block;
+            position: relative;
+            margin: 0px auto;
+            width: 50%;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 12px;
+            text-align: center;
+            color: #222;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<!-- jQuery is required for this example. -->
+<script src='jquery.js'></script>
+<script src='mapbox.js'></script>
+<link href='mapbx.css' rel='stylesheet' />
+<script src='leaflet-osm.js'></script>
+
+<!--<script src="https://cdn.bootcss.com/mapbox-gl/0.50.0/mapbox-gl.js"></script>-->
+<!--<link href="https://cdn.bootcss.com/mapbox-gl/0.50.0/mapbox-gl.css" rel="stylesheet">-->
+<div id='map'></div>
+
+<pre id='info'></pre>
+<div style="position: absolute;bottom: 0">
+    <button onclick="mypoint()" value="选取两点">选取两点</button>
+    <button onclick="myline()"  value="公路连线">公路连线</button>
+    <button onclick="mycircle()" value="曲率半径">曲率半径</button>
+    <button onclick="myzhuang()" value="均分打桩">均分打桩</button>
+</div>
+<script>
+    function mypoint() {
+        $.ajax({
+            url:"point.xml",
+            dataType: "xml",
+            success: function (xml) {
+                var layer = new L.OSM.DataLayer(xml).addTo(map);
+                console.log(layer);
+                map.fitBounds(layer.getBounds());
+                console.log(layer.getBounds());
+
+            }
+        });
+        map.on('mousemove', function (e) {
+            console.log(e.containerPoint);
+            document.getElementById("info").innerHTML =
+
+                    JSON.stringify(e.containerPoint) + '<br />' +
+                    JSON.stringify(e.latlng);
+        });
+    }
+    function myline() {
+        $.ajax({
+            url:"line.xml",
+            dataType: "xml",
+            success: function (xml) {
+                var layer = new L.OSM.DataLayer(xml).addTo(map);
+                console.log(layer);
+                map.fitBounds(layer.getBounds());
+                console.log(layer.getBounds());
+
+            }
+        });
+
+    }
+    function mycircle() {
+        $.ajax({
+            url:"line_circle.xml",
+            dataType: "xml",
+            success: function (xml) {
+                var layer = new L.OSM.DataLayer(xml).addTo(map);
+                console.log(layer);
+                map.fitBounds(layer.getBounds());
+                alert("半径为0.913427937804千米")
+
+            }
+        });
+    }
+    function myzhuang() {
+        $.ajax({
+            url:"zhuang.xml",
+            dataType: "xml",
+            success: function (xml) {
+                var layer = new L.OSM.DataLayer(xml).addTo(map);
+                console.log(layer);
+                map.fitBounds(layer.getBounds());
+                console.log(layer.getBounds());
+
+            }
+        });
+    }
+</script>
+
+<script>
+    L.mapbox.accessToken = 'pk.eyJ1Ijoid3NjanhreSIsImEiOiJjam9xcDJoaDgwNWo3M3JuMml5MDc2eDFkIn0.r1OzCvqtb8intUKrx_FozA';
+    var map = L.mapbox.map('map', 'mapbox.streets');
+    map.on('mousemove', function (e) {
+        document.getElementById("info").innerHTML =
+
+                JSON.stringify(e.containerPoint) + '<br />' +
+                JSON.stringify(e.latlng);
+    });
+    mypoint();
+
+</script>
+</body>
+</html>

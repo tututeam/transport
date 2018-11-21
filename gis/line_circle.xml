@@ -1,0 +1,35 @@
+<osm version="0.6" generator="CGImap 0.6.1 (1490 thorn-01.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+    <node id="276094648" visible="true" version="8" changeset="11064143" timestamp="2012-03-22T15:39:36Z" user="R438" uid="376715" lat="39.8476833" lon="116.3268157"/>
+    <node id="276094653" visible="true" version="9" changeset="12415592" timestamp="2012-07-21T17:08:24Z" user="R438" uid="376715" lat="39.8485316" lon="116.3202713"/>
+    <node id="276094655" visible="true" version="8" changeset="11064143" timestamp="2012-03-22T15:39:36Z" user="R438" uid="376715" lat="39.8495465" lon="116.3180528"/>
+    <node id="276094656" visible="true" version="8" changeset="11064143" timestamp="2012-03-22T15:39:37Z" user="R438" uid="376715" lat="39.8501620" lon="116.3171293"/>
+    <node id="332948419" visible="true" version="5" changeset="838982" timestamp="2009-01-26T14:12:39Z" user="_kendell" uid="68934" lat="39.8499172" lon="116.3174750"/>
+    <node id="1788526030" visible="true" version="1" changeset="11904819" timestamp="2012-06-15T13:20:25Z" user="R438" uid="376715" lat="39.8524116" lon="116.3147947"/>
+    <node id="1833354319" visible="true" version="1" changeset="12415592" timestamp="2012-07-21T17:08:22Z" user="R438" uid="376715" lat="39.8476859" lon="116.3247373"/>
+    <node id="1833354321" visible="true" version="1" changeset="12415592" timestamp="2012-07-21T17:08:23Z" user="R438" uid="376715" lat="39.8478445" lon="116.3229984"/>
+    <node id="1833354323" visible="true" version="1" changeset="12415592" timestamp="2012-07-21T17:08:23Z" user="R438" uid="376715" lat="39.8480575" lon="116.3218545"/>
+    <node id="1833354325" visible="true" version="1" changeset="12415592" timestamp="2012-07-21T17:08:23Z" user="R438" uid="376715" lat="39.8482919" lon="116.3210004"/>
+    <node id="1833354328" visible="true" version="1" changeset="12415592" timestamp="2012-07-21T17:08:23Z" user="R438" uid="376715" lat="39.8489073" lon="116.3193478"/>
+    <node id="1833354330" visible="true" version="1" changeset="12415592" timestamp="2012-07-21T17:08:23Z" user="R438" uid="376715" lat="39.8492482" lon="116.3186294"/>
+    <node id="1833354334" visible="true" version="1" changeset="12415592" timestamp="2012-07-21T17:08:23Z" user="R438" uid="376715" lat="39.8509430" lon="116.3161690"/>
+    <node id="1831234" visible="true" version="1" changeset="12415592" timestamp="2012-07-21T17:08:23Z" user="R438" uid="376715" lat="39.85574547899" lon="116.32564066635133"/>
+    <way id="156340985" visible="true" version="6" changeset="60653137" timestamp="2018-07-12T13:26:17Z" user="booktiger" uid="4794671">
+        <nd ref="276094648"/>
+        <nd ref="1833354319"/>
+        <nd ref="1833354321"/>
+        <nd ref="1833354323"/>
+        <nd ref="1833354325"/>
+        <nd ref="276094653"/>
+        <nd ref="1833354328"/>
+        <nd ref="1833354330"/>
+        <nd ref="276094655"/>
+        <nd ref="332948419"/>
+        <nd ref="276094656"/>
+        <nd ref="1833354334"/>
+        <nd ref="1788526030"/>
+        <tag k="highway" v="trunk"/>
+        <tag k="name" v="南三环"/>
+        <tag k="name:en" v="S. 3rd Ring Road"/>
+        <tag k="oneway" v="yes"/>
+    </way>
+</osm>
