@@ -42,16 +42,23 @@
 </div>
 <script>
     function mypoint() {
-
         $.ajax({
             url:"point.xml",
             dataType: "xml",
             success: function (xml) {
                 var layer = new L.OSM.DataLayer(xml).addTo(map);
-                map.fitBounds(layer.getBounds());
+                console.log(layer);
+                console.log(layer.getBounds());
+                console.log(layer.marker);
 
+
+                var draggable = new L.Draggable(layer);
+
+//                draggable.enable();
+                map.fitBounds(layer.getBounds());
             }
         });
+
         map.on('mousemove', function (e) {
             document.getElementById("info").innerHTML =
 
@@ -66,15 +73,7 @@
             dataType: "xml",
             success: function (xml) {
                 var layer = new L.OSM.DataLayer(xml).addTo(map);
-
-//                console.log( new L.OSM.DataLayer(xml));
-
-//                map.fitBounds(layer);
-
-//                layer.getBounds().features.forEach(function(feature) {
-//                    bounds.extend(feature.geometry.coordinates);
-//                });
-
+                map.fitBounds(layer.getBounds());
 
             }
         });
@@ -88,9 +87,8 @@
                 var layer = new L.OSM.DataLayer(xml).addTo(map);
                 console.log(layer);
                 map.fitBounds(layer.getBounds());
-                console.log(layer.getBounds());
 
-//                alert("半径为0.913427937804千米")
+                alert("半径为0.913427937804千米")
 
             }
         });
