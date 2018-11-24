@@ -12,7 +12,6 @@
     <node id="1833354328" visible="true" version="1" changeset="12415592" timestamp="2012-07-21T17:08:23Z" user="R438" uid="376715" lat="39.8489073" lon="116.3193478"/>
     <node id="1833354330" visible="true" version="1" changeset="12415592" timestamp="2012-07-21T17:08:23Z" user="R438" uid="376715" lat="39.8492482" lon="116.3186294"/>
     <node id="1833354334" visible="true" version="1" changeset="12415592" timestamp="2012-07-21T17:08:23Z" user="R438" uid="376715" lat="39.8509430" lon="116.3161690"/>
-    <node id="1831234" visible="true" version="1" changeset="12415592" timestamp="2012-07-21T17:08:23Z" user="R438" uid="376715" lat="39.85574547899" lon="116.32564066635133"/>
     <way id="156340985" visible="true" version="6" changeset="60653137" timestamp="2018-07-12T13:26:17Z" user="booktiger" uid="4794671">
         <nd ref="276094648"/>
         <nd ref="1833354319"/>

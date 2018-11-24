@@ -11,6 +11,7 @@
             display: block;
             position: relative;
             margin: 0px auto;
+
             width: 50%;
             padding: 10px;
             border: none;
@@ -26,6 +27,8 @@
 <!-- jQuery is required for this example. -->
 <script src='jquery.js'></script>
 <script src='mapbox.js'></script>
+<script src='layer.js'></script>
+
 <link href='mapbx.css' rel='stylesheet' />
 <script src='leaflet-osm.js'></script>
 
@@ -42,75 +45,131 @@
 </div>
 <script>
     function mypoint() {
+        try {
+            pointGroup.clearLayers();
+        }
+        catch(e) {
+        }
         $.ajax({
             url:"point.xml",
             dataType: "xml",
             success: function (xml) {
-                var layer = new L.OSM.DataLayer(xml).addTo(map);
-                console.log(layer);
-                console.log(layer.getBounds());
-                console.log(layer.marker);
+                var marks=[];
 
+                var xml_data= new L.OSM.DataLayer(xml);
+                var layers =xml_data.getLayers();
+                layers.forEach(function (item,index) {
+                    console.log(item.getLatLng());
+                    var marker = L.marker(item.getLatLng(), {
+                        icon: L.mapbox.marker.icon({
+                            'marker-color': 'ff8888'
+                        }),
+                        draggable: true
+                    });
+                    marker.addTo(map);
+                    marks.push(marker);
 
-                var draggable = new L.Draggable(layer);
-
-//                draggable.enable();
-                map.fitBounds(layer.getBounds());
+                });
+                pointGroup=L.layerGroup(marks);
+                map.addLayer(pointGroup);
+                map.fitBounds(xml_data.getBounds());
             }
         });
 
-        map.on('mousemove', function (e) {
-            document.getElementById("info").innerHTML =
-
-                    JSON.stringify(e.containerPoint) + '<br />' +
-                    JSON.stringify(e.latlng);
-        });
     }
     function myline() {
-
+        pointGroup.clearLayers();
         $.ajax({
             url:"line.xml",
             dataType: "xml",
+
             success: function (xml) {
-                var layer = new L.OSM.DataLayer(xml).addTo(map);
-                map.fitBounds(layer.getBounds());
+                var xml_data= new L.OSM.DataLayer(xml).addTo(map);
+                map.fitBounds(xml_data.getBounds());
 
             }
         });
-
     }
     function mycircle() {
+        pointGroup.clearLayers();
         $.ajax({
             url:"line_circle.xml",
             dataType: "xml",
             success: function (xml) {
-                var layer = new L.OSM.DataLayer(xml).addTo(map);
-                console.log(layer);
-                map.fitBounds(layer.getBounds());
+                var marks=[];
 
-                alert("半径为0.913427937804千米")
+                var xml_data= new L.OSM.DataLayer(xml).addTo(map);
+                var marker = L.marker([39.85574547899,116.32564066635133], {
+                    icon: L.mapbox.marker.icon({
+                        'marker-color': 'ff8888'
+                    }),
+                    draggable: true
+
+                });
+                marks.push(marker);
+                marker.addTo(map);
+                pointGroup=L.layerGroup(marks);
+                map.addLayer(pointGroup);
+                map.fitBounds(xml_data.getBounds());
+                alert( '半径为985.2145387米');
 
             }
         });
     }
     function myzhuang() {
+        pointGroup.clearLayers();
         $.ajax({
             url:"zhuang.xml",
             dataType: "xml",
             success: function (xml) {
-                var layer = new L.OSM.DataLayer(xml).addTo(map);
-                console.log(layer);
-                map.fitBounds(layer.getBounds());
-                console.log(layer.getBounds());
-
+                var xml_data= new L.OSM.DataLayer(xml);
+                var layers =xml_data.getLayers();
+                var marks=[];
+                layers.forEach(function (item,index) {
+                    console.log(item.getLatLng());
+                    var marker = L.marker(item.getLatLng(), {
+                        icon: L.mapbox.marker.icon({
+                            'marker-color': 'ff8888'
+                        }),
+                        draggable: true
+                    });
+                    marker.bindPopup('<button onclick="opentable('+item.getLatLng().lat+","+item.getLatLng().lng+')" >添加标志物</button>');
+                    marker.addTo(map);
+                    marks.push(marker);
+                });
+                pointGroup=L.layerGroup(marks);
+                map.addLayer(pointGroup);
+                map.fitBounds(xml_data.getBounds());
             }
         });
     }
 </script>
-
 <script>
+    function opentable(lat,lng) {
+        layer.open({
+            type: 2,
+            area: ['800px', '600px'],
+            title:'标志物经度'+lat+'纬度'+lng,
+            fixed: false, //不固定
+            maxmin: true,
+            shadeClose: true, //点击遮罩关闭
+
+            content: 'table.html'
+        });
+    }
+
+</script>
+<script>
+    function getxml(str) {
+         var parser=new DOMParser();
+        return parser.parseFromString(str,"text/xml");
+    }
+
     L.mapbox.accessToken = 'pk.eyJ1Ijoid3NjanhreSIsImEiOiJjam9xcDJoaDgwNWo3M3JuMml5MDc2eDFkIn0.r1OzCvqtb8intUKrx_FozA';
-    var map = L.mapbox.map('map', 'mapbox.streets');
+    var map = L.mapbox.map('map', 'mapbox.streets')
+            .setView([39.8, 116.4], 13);
+    var marks=[];
+    var pointGroup;
     map.on('mousemove', function (e) {
         document.getElementById("info").innerHTML =
                 JSON.stringify(e.containerPoint) + '<br />' +
@@ -118,12 +177,9 @@
     });
     map.on('click', function (e) {
         console.log(e.latlng);
-        document.getElementById("info").innerHTML =
 
-                JSON.stringify(e.containerPoint) + '<br />' +
-                JSON.stringify(e.latlng);
     });
-    mypoint();
+
 
 </script>
 </body>
