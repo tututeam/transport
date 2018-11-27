@@ -1,0 +1,173 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title></title>
+
+
+    <style type="text/css">
+        html{height:100%}
+        body{height:100%;margin:0px;padding:0px}
+        #map_canvas{
+            margin:0 auto;
+            border:2px solid #f9f7f6;
+            width:100%;
+            height:95%;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+
+
+
+<div id="map_canvas"></div>
+<button>新增点</button>
+<button onclick="trigger_circle()">计算半径</button>
+
+<script src="jquery-2.1.4.min.js"></script>
+<script src="http://api.map.baidu.com/api?v=3.0&ak=DXzAydHPMSoI3jr04QHlOnriSReOMq9q"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+
+
+<script type="text/javascript">
+    var map = new BMap.Map("map_canvas");          // 创建地图实例
+    var initLat = 39.916527;
+    var initLng = 116.397128;
+    var apoint = new BMap.Point(initLng, initLat);  // 创建点坐标
+    map.centerAndZoom(apoint, 13);                 // 初始化地图，设置中心点坐标和地图级别
+    map.enableScrollWheelZoom();                            // 启用滚轮放大缩小
+    map.addControl(new BMap.NavigationControl());           // 启用放大缩小 尺
+
+
+    function mark_point(r){
+        mk = new BMap.Marker(r);
+        mk.addEventListener("dragend", showInfo);
+        mk.enableDragging();    //可拖拽
+        map.addOverlay(mk);//把点添加到地图上
+    }
+
+    function cal_circle(pointlist) {
+        var x1=0,x2=0,y1=0,y2=0,x3=0,y3=0,x1y1=0,x1y2=0,x2y1=0,count=0;
+        pointlist.forEach(function (item,index,arr) {
+            if (item.Na==true){
+                count+=1;
+                console.log(item);
+                x1+=item.point.lng;
+                y1+=item.point.lat;
+                x2 +=item.point.lng**2;
+
+                y2 +=item.point.lat**2;
+                x3 +=item.point.lng**3;
+
+                y3 +=item.point.lat**3;
+                x1y1 +=item.point.lng*item.point.lat;
+
+                x1y2+=item.point.lng*item.point.lat*item.point.lat;
+                x2y1+=item.point.lng*item.point.lng*item.point.lat;
+
+            }
+        });
+        N=count;
+        C=N*x2 - x1*x1;
+        D=N*x1y1 - x1*y1;
+        E=N*x3+N*x1y2-(x2+y2)*x1;
+        G=N*y2 - y1*y1;
+        H=N*x2y1+N*y3-(x2+y2) *y1;
+
+        a=(H*D -E*G)/(C*G -D*D);
+        b=(H*C -E*D)/(D*D -G*C);
+        c=-(a*x1+b*y1+x2+y2)/N;
+
+        var o = new BMap.Point(-a/2,-b/2);
+        mark_point(o);
+        console.log(-a/2,-b/2,Math.sqrt(a*a+b*b-4*c)/2*1852.25*60);
+
+    }
+    var init =true;
+    function trigger_circle(){
+        var allOverlay = map.getOverlays();
+        if (!init){
+            flag=false;
+            allOverlay.pop();
+        }
+        allOverlay.pop();
+
+        console.log(allOverlay);
+        cal_circle(allOverlay);
+    }
+    var ipoint = new BMap.Point(116.39066, 39.91697);
+    var ipoint1 = new BMap.Point(116.403308, 39.922503);
+    var ipoint2 = new BMap.Point(116.42803, 39.921618);
+    var ipoint3 = new BMap.Point(116.438666, 39.916084);
+    var ipoint4 = new BMap.Point(116.428666, 39.916084);
+    var ipoint5 = new BMap.Point(116.418666, 39.916084);
+    var ipoint6 = new BMap.Point(116.448666, 39.916084);
+
+    var pointlist=[];
+    mark_point(ipoint);
+    mark_point(ipoint1);
+    mark_point(ipoint2);
+    // mark_point(ipoint3);
+    // mark_point(ipoint4);
+    // mark_point(ipoint5);
+    // mark_point(ipoint6);
+
+    // pointlist.push(ipoint);
+    // pointlist.push(ipoint1);
+    // pointlist.push(ipoint2);
+    // pointlist.push(ipoint3);
+
+    // cal_circle(pointlist);
+    //绑定Marker的拖拽事件
+    function showInfo(e){
+        var gc = new BMap.Geocoder();
+        gc.getLocation(e.point, function(rs){
+            var addComp = rs.addressComponents;
+            var address = addComp.province +  addComp.city + addComp.district + addComp.street + addComp.streetNumber;//获取地址
+            //画图 ---》显示地址信息
+            var label = new BMap.Label(address, {offset: new BMap.Size(20, -10)});
+            map.removeOverlay(mk.getLabel());//删除之前的label
+            mk.setLabel(label);
+            //alert(e.point.lng + ", " + e.point.lat + ", "+address);
+        });
+    }
+
+
+
+    //获取地址信息，设置地址label
+    function getAddress(point){
+        var gc = new BMap.Geocoder();
+
+        gc.getLocation(point, function(rs){
+            var addComp = rs.addressComponents;
+            var address =  addComp.province +  addComp.city + addComp.district + addComp.street + addComp.streetNumber;//获取地址
+            console.log(address);
+
+            //画图 ---》显示地址信息
+            var label = new BMap.Label(address,{offset:new BMap.Size(20,-10)});
+            map.removeOverlay(mk.getLabel());//删除之前的label
+
+
+            mk.setLabel(label);
+
+        });
+
+    }
+
+
+
+</script>
+
+
+</body>
+</html>

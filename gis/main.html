@@ -29,11 +29,11 @@
 <script src='js/mapbox.js'></script>
 <script src='js/layer.js'></script>
 <script src='js/l.control.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
+<link href='css/L.Control.Locate.mapbox.css' rel='stylesheet' />
 <!--[if lt IE 9]>
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
 <![endif]-->
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
+<link href='css/font-awesome.min.css' rel='stylesheet' />
 <link href='css/mapbx.css' rel='stylesheet' />
 <script src='js/leaflet-osm.js'></script>
 
@@ -120,7 +120,7 @@
                 map.fitBounds(xml_data.getBounds());
             }
         });
-
+s
     }
     function myline() {
         pointGroup.clearLayers();
@@ -169,7 +169,7 @@
             success: function (xml) {
                 var xml_data= new L.OSM.DataLayer(xml);
                 var layers =xml_data.getLayers();
-                console.log(layers)
+                console.log(layers);
                 var marks=[];
                 layers.forEach(function (item,index) {
                     console.log(item.getLatLng());
