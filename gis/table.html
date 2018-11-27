@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html>
+<script src="js/jquery.js"></script>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
@@ -20,15 +21,24 @@
 
           </style>
 </head>
+<script>
+    console.log( $('#[href]', parent.document));
+</script>
 <body>
-<p style="text-align: center;"><span style="font-size: 24px;">路产状况登记表</span></p>
+<p style="text-align: center;"><span style="font-size: 24px;">路桩信息登记表</span></p>
 <table width="100%" cellspacing="0" cellpadding="1">
     <tbody>
     <tr>
-        <td><p> 排序号 </p></td>
-        <td><input /></td>
-        <td><p> 中心桩号 </p></td>
-        <td><input /></td>
+        <td><p> 道路名 </p></td>
+        <td><input value="南三环"/></td>
+        <td><p> 桩号 </p></td>
+        <td><input id='zhuang' value="2"/></td>
+    </tr>
+    <tr>
+        <td><p> 经度 </p></td>
+        <td><input value="39.8524116" id="lat"/></td>
+        <td><p> 纬度 </p></td>
+        <td><input  value="116.3147947" id="lng"/></td>
     </tr>
     <tr>
         <td><p> 河名或者桥名 </p></td>
@@ -36,29 +46,12 @@
         <td><p> 孔数－跨径(孔*米) </p></td>
         <td><input /></td>
     </tr>
-    <tr>
-        <td><p> 桥梁全长(米) </p></td>
-        <td><input /></td>
-        <td><p> 净宽 </p></td>
-        <td><input /></td>
-    </tr>
-    <tr>
-        <td><p> 上部构造 </p></td>
-        <td><input /></td>
-        <td><p> 台 </p></td>
-        <td><input /></td>
-    </tr>
+
     <tr>
         <td><p> 墩 </p></td>
         <td><input /></td>
         <td><p> 设计荷载 </p></td>
         <td><input /></td>
-    </tr>
-    <tr>
-        <td><p> 设计使用年限 </p></td>
-        <td><input /></td>
-        <td><p> 修建时间 </p></td>
-        <td><input type="datetime-local"/></td>
     </tr>
     <tr>
         <td><p> 现状 </p></td>

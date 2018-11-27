@@ -34,8 +34,8 @@
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
 <![endif]-->
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
-<link href='mapbx.css' rel='stylesheet' />
-<script src='leaflet-osm.js'></script>
+<link href='css/mapbx.css' rel='stylesheet' />
+<script src='js/leaflet-osm.js'></script>
 
 <!--<script src="https://cdn.bootcss.com/mapbox-gl/0.50.0/mapbox-gl.js"></script>-->
 <!--<link href="https://cdn.bootcss.com/mapbox-gl/0.50.0/mapbox-gl.css" rel="stylesheet">-->
@@ -50,15 +50,14 @@
 
 </div>
 <script>
-    function opentable(lat,lng) {
+    function opentable(obj) {
         layer.open({
             type: 2,
             area: ['800px', '600px'],
-            title:'标志物经度'+lat+'纬度'+lng,
+            title:'标志物',
             fixed: false, //不固定
             maxmin: true,
             shadeClose: true, //点击遮罩关闭
-
             content: 'table.html'
         });
     }
@@ -102,7 +101,6 @@
             dataType: "xml",
             success: function (xml) {
                 var marks=[];
-
                 var xml_data= new L.OSM.DataLayer(xml);
                 var layers =xml_data.getLayers();
                 layers.forEach(function (item,index) {
@@ -171,6 +169,7 @@
             success: function (xml) {
                 var xml_data= new L.OSM.DataLayer(xml);
                 var layers =xml_data.getLayers();
+                console.log(layers)
                 var marks=[];
                 layers.forEach(function (item,index) {
                     console.log(item.getLatLng());
@@ -180,9 +179,11 @@
                         }),
                         draggable: true
                     });
-                    marker.bindPopup('<button onclick="opentable('+item.getLatLng().lat+","+item.getLatLng().lng+')" >添加标志物</button>');
+                    marker.bindPopup('<button  lat="'+item.getLatLng().lat+'" onclick="opentable(this)" ' +
+                            'lng="'+item.getLatLng().lng+'" index="'+index+'">添加标志物</button>');
                     marker.addTo(map);
                     marks.push(marker);
+
                 });
                 pointGroup=L.layerGroup(marks);
                 map.addLayer(pointGroup);
