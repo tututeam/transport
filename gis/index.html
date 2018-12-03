@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<script src="js/jquery.js"></script>
+<script src='js/layer.js'></script>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+
+        td {
+            border: solid lightskyblue;
+            border-width: 0px 1px 1px 0px;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+
+        table {
+            border: solid lightskyblue;
+            border-width: 1px 0px 0px 1px;
+        }
+
+          </style>
+</head>
+<script>
+</script>
+<body>
+<p style="text-align: center;"><span style="font-size: 24px;">污染物信息登记表</span></p>
+<table width="100%" cellspacing="0" cellpadding="1">
+    <tbody>
+    <tr>
+        <td><p> 道路名 </p></td>
+        <td><input value="南三环"/></td>
+        <td><p> 桩号 </p></td>
+        <td><input id='zhuang' value="2"/></td>
+    </tr>
+    <tr>
+        <td><p> 经度 </p></td>
+        <td><input value="39.8524116" id="lat"/></td>
+        <td><p> 纬度 </p></td>
+        <td><input  value="116.3147947" id="lng"/></td>
+    </tr>
+
+    <tr>
+        <td><p> 污染面积 </p></td>
+        <td><button id="small">小</button><button id="big">大</button></td>
+        <td><p> 照片 </p></td>
+        <td><input type="file" /></td>
+    </tr>
+    </tbody>
+</table>
+<div style="margin-left: 45%">
+    <p><br /></p>
+    <input type="button" value="提交"/>
+    <input type="button"  value="重置"/>
+</div>
+
+</body>
+<script>
+    function opentable(obj) {
+        layer.open({
+            type: 2,
+            area: ['1100px', '650px'],
+            title:'污染物',
+            fixed: false, //不固定
+            maxmin: true,
+            shadeClose: true, //点击遮罩关闭
+            content: 'app.html'
+        });
+    }
+
+    $('#big').click(function () {
+        opentable(this);
+    });
+</script>
+</html>

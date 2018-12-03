@@ -1,0 +1,73 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title></title>
+    <script src='js/jquery.js'></script>
+    <script src='js/mapbox.js'></script>
+    <script src='js/layer.js'></script>
+
+    <style type="text/css">
+        html{height:100%}
+        body{height:100%;margin:0px;padding:0px}
+        #map_canvas{
+            margin:0 auto;
+            border:2px solid #f9f7f6;
+            width:100%;
+            height:95%;
+        }
+
+        .BMap_cpyCtrl {
+            display: none;
+        }
+
+        .anchorBL {
+            display: none;
+
+
+    </style>
+
+</head>
+<body>
+
+
+
+<div id="map_canvas"></div>
+<button>新增点</button>
+<button onclick="trigger_circle()">计算半径</button>
+
+<script src="js/jquery.js"></script>
+
+<script src="http://api.map.baidu.com/api?v=3.0&ak=DXzAydHPMSoI3jr04QHlOnriSReOMq9q"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+
+
+<script type="text/javascript">
+    var map = new BMap.Map("map_canvas");          // 创建地图实例
+    var initLat = 40.016527;
+    var initLng = 116.297128;
+    var apoint = new BMap.Point(initLng, initLat);  // 创建点坐标
+    map.centerAndZoom(apoint, 14);                 // 初始化地图，设置中心点坐标和地图级别
+    map.enableScrollWheelZoom();                            // 启用滚轮放大缩小
+    var navigationControl = new BMap.NavigationControl({
+        // 靠左上角位置
+        anchor: BMAP_ANCHOR_TOP_LEFT,
+        // LARGE类型
+        type: BMAP_NAVIGATION_CONTROL_LARGE,
+        // 启用显示定位
+        enableGeolocation: true // 会多出一个点
+    });
+    map.addControl(navigationControl);
+
+
+</script>
+
+
+</body>
+</html>
