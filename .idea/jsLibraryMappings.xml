@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{L.Control.Locate, mapbox-gl}" />
-    <includedPredefinedLibrary name="ECMAScript 6" />
+    <file url="PROJECT" libraries="{DrawingManager_min, MarkerClusterer_min, SearchInfoWindow_min, TextIconOverlay_min}" />
   </component>
 </project>

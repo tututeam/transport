@@ -11,15 +11,23 @@
     <script src='js/jquery.js'></script>
     <script src='js/mapbox.js'></script>
     <script src='js/layer.js'></script>
-
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=DXzAydHPMSoI3jr04QHlOnriSReOMq9q"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+    <!--加载检索信息窗口-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.css" />
     <style type="text/css">
         html{height:100%}
         body{height:100%;margin:0px;padding:0px}
         #map_canvas{
             margin:0 auto;
             border:2px solid #f9f7f6;
-            width:100%;
-            height:95%;
+            width: 50%;
+            height:100%;
+            float: right;
         }
 
         .BMap_cpyCtrl {
@@ -29,6 +37,29 @@
         .anchorBL {
             display: none;
 
+        }
+        button{
+            width: 270px; /* 宽度 */
+            height: 40px; /* 高度 */
+            border-width: 0px; /* 边框宽度 */
+            border-radius: 3px; /* 边框半径 */
+            background: #1E90FF; /* 背景颜色 */
+            cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+            outline: none; /* 不显示轮廓线 */
+            font-family: Microsoft YaHei; /* 设置字体 */
+            color: white; /* 字体颜色 */
+            font-size: 17px; /* 字体大小 */
+            margin:2px 2px 2px 2px;
+        }
+        button:hover { /* 鼠标移入按钮范围时改变颜色 */
+            background: #5599FF;
+        }
+        .form{
+            width: 50%;
+            padding-top:10%;
+            padding-left:5%;
+
+        }
 
     </style>
 
@@ -36,24 +67,135 @@
 <body>
 
 
-
 <div id="map_canvas"></div>
-<button>新增点</button>
-<button onclick="trigger_circle()">计算半径</button>
 
-<script src="js/jquery.js"></script>
+<div class="form">
+    <button  onclick="start_walk()">开始</button>
+    <button onclick="stop_walk()">停止</button>
+    <button onclick="reset_walk()">重新测量</button>
+    <button onclick="close_layer()">确认提交</button>
 
-<script src="http://api.map.baidu.com/api?v=3.0&ak=DXzAydHPMSoI3jr04QHlOnriSReOMq9q"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+    <h1>当前位置</h1>
+    <textarea id="log" rows="15" cols="80"></textarea>
+</div>
 
 
+<script>
+    function close_layer() {
+        // window.parent.location.reload();
+        var index=layer.open();
+        parent.layer.close(index);
+        parent.document.getElementById('area').value='45.431234567平方米';
+    }
+    function showtime(){
+        var myDate = new Date();
+
+        var date=myDate.getDate();
+        var h=myDate.getHours();       //获取当前小时数(0-23)
+        var m=myDate.getMinutes();     //获取当前分钟数(0-59)
+        var s=myDate.getSeconds();
+        return "当前时间 "+h+':'+m+':'+s;
+    }
+    var index=0;
+    var timer;
+    var str;
+    function start_walk() {
+        var str = $('#log').val() + '开始行走     ' +showtime()+'\r\n';
+        $('#log').val(str);//
+        function walk() {
+            var marker = new BMap.Marker(point_arr[index]); // 创建点
+            overlays.push(marker);
+            map.addOverlay(marker);
+            str = $('#log').val() + '行走到点     ' +point_arr[index].lng +"    "+point_arr[index].lat+ "     "+ showtime()+'\r\n';
+            $('#log').val(str);
+            index+=1;
+            console.log(point_arr[index]);
+            // console.log(index,point_arr.length);
+
+            if (index==point_arr.length){
+                window.clearTimeout(timer);
+                str = $('#log').val() + '停走行走     ' +showtime()+'\r\n';
+                $('#log').val(str);
+                str = $('#log').val() + '正在绘制污染区域......     ' +showtime()+'\r\n';
+                $('#log').val(str);//
+                window.setTimeout(clearAll,4000);
+                window.setTimeout(showPolygon,4000);
+
+            }
+        }
+        timer = window.setInterval(walk,1800);
+
+    }
+    function stop_walk(){
+        window.clearTimeout(timer);
+        str = $('#log').val() + '停走行走     ' +showtime()+'\r\n';
+        $('#log').val(str);
+        str = $('#log').val() + '正在绘制污染区域......     ' +showtime()+'\r\n';
+        $('#log').val(str);//
+        window.setTimeout(clearAll,4000);
+        window.setTimeout(showPolygon,4000);
+
+    }
+    function reset_walk() {
+        window.clearTimeout(timer);
+        str = $('#log').val() + '重新测量     ' +showtime()+'\r\n';
+        $('#log').val(str);
+        clearAll();
+    }
+</script>
+<script>
+    function  showPolygon(){
+        str = $('#log').val() + '污染区域绘制完成     ' +showtime()+'\r\n';
+        $('#log').val(str);
+        str = $('#log').val() + '污染区域面积为45.431234567平方米     ' +showtime()+'\r\n';
+        $('#log').val(str);
+        var polygon = new BMap.Polygon(point_arr, styleOptions);  //创建多边形
+        overlays.push(polygon)
+        map.addOverlay(polygon);   //增加多边形
+    }
+
+    function draw_rect(){
+        var drawingManager = new BMapLib.DrawingManager(map, {
+            isOpen: false, //是否开启绘制模式
+            enableDrawingTool: true, //是否显示工具栏
+            drawingToolOptions: {
+                anchor: BMAP_ANCHOR_TOP_RIGHT, //位置
+                offset: new BMap.Size(5, 5), //偏离值
+            },
+            circleOptions: styleOptions, //圆的样式
+            polylineOptions: styleOptions, //线的样式
+            polygonOptions: styleOptions, //多边形的样式
+            rectangleOptions: styleOptions //矩形的样式
+        });
+        var overlaycomplete = function(e){
+            overlays.push(e.overlay);
+            var path = e.overlay.getPath();//Array<Point> 返回多边型的点数组
+            for(var i=0;i<path.length;i++){
+                console.log("lng:"+path[i].lng+"\n lat:"+path[i].lat);
+            }
+        };
+
+        //添加鼠标绘制工具监听事件，用于获取绘制结果
+        drawingManager.addEventListener('overlaycomplete', overlaycomplete);
+
+
+    }
+    function clearAll() {
+        for(var i = 0; i < overlays.length; i++){
+            map.removeOverlay(overlays[i]);
+        }
+        overlays.length = 0
+    }
+</script>
+<script>
+
+</script>
 <script type="text/javascript">
     var map = new BMap.Map("map_canvas");          // 创建地图实例
-    var initLat = 40.016527;
-    var initLng = 116.297128;
+    var initLat = 39.839207;
+    var initLng =  116.294963;
     var apoint = new BMap.Point(initLng, initLat);  // 创建点坐标
-    map.centerAndZoom(apoint, 14);                 // 初始化地图，设置中心点坐标和地图级别
+    map.centerAndZoom(apoint, 20);                 // 初始化地图，设置中心点坐标和地图级别
     map.enableScrollWheelZoom();                            // 启用滚轮放大缩小
     var navigationControl = new BMap.NavigationControl({
         // 靠左上角位置
@@ -64,7 +206,30 @@
         enableGeolocation: true // 会多出一个点
     });
     map.addControl(navigationControl);
-
+    map.addEventListener("click",function(e){
+        // console.log(e.point.lng + "," + e.point.lat);
+    });
+    var overlays = [];
+    var styleOptions = {
+        strokeColor:"red",    //边线颜色。
+        fillColor:"red",      //填充颜色。当参数为空时，圆形将没有填充效果。
+        strokeWeight: 3,       //边线的宽度，以像素为单位。
+        strokeOpacity: 0.8,	   //边线透明度，取值范围0 - 1。
+        fillOpacity: 0.6,      //填充的透明度，取值范围0 - 1。
+        strokeStyle: 'solid' //边线的样式，solid或dashed。
+    };
+    //实例化鼠标绘制工具
+    var point_arr=[
+        new BMap.Point(116.294905,39.839235),
+        new BMap.Point(116.294972,39.839176),
+        new BMap.Point(116.295003,39.8392),
+        new BMap.Point(116.295012,39.839235),
+        new BMap.Point(116.294999,39.839269),
+        new BMap.Point(116.294963,39.839301),
+        new BMap.Point(116.294891,39.83929),
+    ];
+    // draw_rect();
+    // showPolygon();
 
 </script>
 

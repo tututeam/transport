@@ -6,5 +6,9 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mapbox-gl" level="application" />
     <orderEntry type="library" name="L.Control.Locate" level="application" />
+    <orderEntry type="library" name="TextIconOverlay_min" level="application" />
+    <orderEntry type="library" name="MarkerClusterer_min" level="application" />
+    <orderEntry type="library" name="DrawingManager_min" level="application" />
+    <orderEntry type="library" name="SearchInfoWindow_min" level="application" />
   </component>
 </module>
