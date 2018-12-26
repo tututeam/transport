@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import json
 
 point_arr = []
-with open('../data/a.txt', 'r', encoding='utf8') as f:
+with open('../data/print.txt', 'r', encoding='utf8') as f:
     lines = f.readlines()
     a = float(lines[0].split(' ')[0].strip(' ').strip('\n'))
     b = float(lines[0].split(' ')[1].strip(' ').strip('\n'))
