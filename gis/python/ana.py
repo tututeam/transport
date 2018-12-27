@@ -3,14 +3,14 @@ import matplotlib.pyplot as plt
 import json
 
 point_arr = []
-with open('../data/print.txt', 'r', encoding='utf8') as f:
+with open('../data/fujian', 'r', encoding='utf8') as f:
     lines = f.readlines()
     c=0
     for line in lines:
         if "纬度" in line:
             acc = lines[c+2][3:].strip('\n')
             acc = float(acc)
-            if acc >4:
+            if acc >100:
                 c+=1
                 continue
             lng=line[3:].strip('\n')
@@ -20,6 +20,6 @@ with open('../data/print.txt', 'r', encoding='utf8') as f:
             point_arr.append({'lng': str(lng), 'lat': str(lat)})
         c+=1
 
-with open('../data/p.json', 'w') as f1:
+with open('../data/fujian.json', 'w') as f1:
 
     f1.write(json.dumps(point_arr))
