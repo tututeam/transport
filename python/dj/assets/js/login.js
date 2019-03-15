@@ -1,4 +1,8 @@
-    var autoOptions = {
+
+
+$('#start').datetimepicker();
+$('#end').datetimepicker();
+var autoOptions = {
         input: "tipinput_up",
     };
     var autoOptions_down = {
