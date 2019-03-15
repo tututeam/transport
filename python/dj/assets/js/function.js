@@ -109,7 +109,6 @@ function removeMarkers() {
 }
 
 function add_markers(color) {
-    console.log(positions)
     for (var i = 0; i < positions.length; i++) {
         var center = positions[i];
         

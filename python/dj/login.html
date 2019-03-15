@@ -23,16 +23,13 @@
     <!--[if (gte IE 9)|!(IE)]><!-->
     <script src="assets/js/jquery.js"></script>
     <!--<![endif]-->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
-
+   
     <link rel="stylesheet" href="assets/css/amazeui.min.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="assets/css/amazeui.datetimepicker.css" />
     <script src="assets/js/amazeui.datetimepicker.min.js"></script>
-    <script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
-    <script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/city-picker.min.js"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.13&key=c536f4eae991666b64267ca01f855153&plugin=AMap.Autocomplete,AMap.PlaceSearch"></script>
 
     <style>
         form{
@@ -62,17 +59,15 @@
         <div class="am-input-group date" id="my-end" data-date="2019-2-1" data-date-format="yyyy-mm-dd hh:ii">
             <input size="16" type="text" value="2019-02-01 15:45" class="am-form-field" readonly>
             <span class="am-input-group-label add-on"><i class="icon-th am-icon-calendar"></i></span>
-        </div>
-
-
-        <p><input id='up-picker' type="text" class="am-form-field am-round" placeholder="上车地点" /></p>
-        <p><input id='down-picker' type="text" class="am-form-field am-round" placeholder="下车地点" /></p>
+        </div>    
+        <p><input id='tipinput_up' type="text" class="am-form-field am-round" placeholder="上车地点" /></p>
+        <p><input id='tipinput_down' type="text" class="am-form-field am-round" placeholder="下车地点" /></p>
         <p><input type="number" class="am-form-field am-round" placeholder="联系电话" /></p>
         <button onclick="window.location='index.html'" type="button" style="width:80%" class="am-btn am-btn-primary am-round">提交</button>
 
     </form>
     <script src="assets/js/login.js"></script>
-
+  
 
     <!--[if lte IE 8 ]>
 <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
