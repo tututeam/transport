@@ -24,22 +24,12 @@ function get_ticket() {
 content: '<h4>酒仙桥北路 —— 后鼓楼苑胡同</h4>'
 +'<img id="image"   width="30%" height="30%"'+
 ' src="qrcode.jpg">'+
-' <h4>乘车时间：15:00 —— 16:20</h4>'+
+' <h4>乘车时间：15:30 —— 16:20</h4>'+
 ' <h4>乘车里程：22.70公里</h4>'+
-
 '<h4>扫码上车检票</h4>'+
 '<button type="button"  style="width:80%"class="btn btn-default btn-lg"><span class="glyphicon glyphicon-share" aria-hidden="true"></span>分享</button>'
 ,skin: 'footer'
 });
-    // layer.open({
-    //     type: 2,
-    //     area: ['200px', '200px'],
-    //     title: '车票',
-    //     fixed: false, //不固定
-    //     maxmin: true,
-    //     shadeClose: true, //点击遮罩关闭
-    //     content: 'qrcode.html'
-    // });
 }
 
 
@@ -55,7 +45,6 @@ function getData() {
         removeMarkers();
         add_markers('#00CD00');
     });
-
 };
 
 
@@ -90,10 +79,6 @@ function get_one_port() {
 };
 
 function driving_line() {
-    // positions.forEach(value,index){
-    //     var lng=value[0],
-    //     var lat =value[1]
-    // });
     driving.search(new AMap.LngLat(positions[0][0], positions[0][1]), new AMap.LngLat(positions[3][0],
         positions[3][1]), {
         waypoints: [new AMap.LngLat(positions[1][0], positions[1][1]), new AMap.LngLat(positions[2][0],
@@ -111,7 +96,6 @@ function removeMarkers() {
 function add_markers(color) {
     for (var i = 0; i < positions.length; i++) {
         var center = positions[i];
-        
         var circleMarker = new AMap.CircleMarker({
             map: map,
             center: center,
