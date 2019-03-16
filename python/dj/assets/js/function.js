@@ -9,7 +9,7 @@ $(document).ready(function () {
     map = new AMap.Map('map', {
         resizeEnable: true,
         zoom: 13,
-        center: [116.449917,39.939481]
+        center: [116.449917, 39.939481]
     });
     driving = new AMap.Driving({
         map: map,
@@ -21,18 +21,16 @@ $(document).ready(function () {
 
 function get_ticket() {
     layer.open({
-content: '<h4>酒仙桥北路 —— 后鼓楼苑胡同</h4>'
-+'<img id="image"   width="30%" height="30%"'+
-' src="qrcode.jpg">'+
-' <h4>乘车时间：15:30 —— 16:20</h4>'+
-' <h4>乘车里程：22.70公里</h4>'+
-'<h4>扫码上车检票</h4>'+
-'<button type="button"  style="width:80%"class="btn btn-default btn-lg"><span class="glyphicon glyphicon-share" aria-hidden="true"></span>分享</button>'
-,skin: 'footer'
-});
+        content: '<h4>酒仙桥北路 —— 后鼓楼苑胡同</h4>' +
+            '<img id="image"   width="30%" height="30%"' +
+            ' src="qrcode.jpg">' +
+            ' <h4>乘车时间：15:30 —— 16:20</h4>' +
+            ' <h4>乘车里程：22.70公里</h4>' +
+            '<h4>扫码上车检票</h4>' +
+            '<button type="button"  style="width:80%"class="btn btn-default btn-lg"><span class="glyphicon glyphicon-share" aria-hidden="true"></span>分享</button>',
+        skin: 'footer'
+    });
 }
-
-
 
 function getData() {
     positions = [];
@@ -99,7 +97,7 @@ function add_markers(color) {
         var circleMarker = new AMap.CircleMarker({
             map: map,
             center: center,
-            radius: 5, 
+            radius: 5,
             strokeColor: color,
             strokeWeight: 1,
             strokeOpacity: 1,
